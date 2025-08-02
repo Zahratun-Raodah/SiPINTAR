@@ -22,7 +22,9 @@ use App\Http\Controllers\AuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function () {
+    return 'Hello from Railway!';
+});
 
 Route::get('/', [LandingPageController::class, 'index'])->name('page');
 
