@@ -39,14 +39,12 @@
                             <label for="nama_mapel">Nama Mata Pelajaran</label>
                             <input type="text" class="form-control" name="nama_mapel" id="nama_mapel" value="{{ $mapel->nama_mapel }}" required>
                         </div>
-
                         <div>
                             <button class="btn btn-success">edit</button>
                             <a href="{{ route('mapel') }}" class="btn btn-secondary">Kembali</a>
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>

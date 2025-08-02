@@ -54,7 +54,7 @@
 
                     foreach ($absenSiswa as $absen) {
                         $hari = \Carbon\Carbon::parse($absen->created_at)->day;
-                        $huruf = strtoupper(substr($absen->status, 0, 1)); // H/I/S/A
+                        $huruf = strtoupper(substr($absen->status, 0, 1));
                         $pertemuan[$hari] = $huruf;
                         $statusCounts[$absen->status] = ($statusCounts[$absen->status] ?? 0) + 1;
                     }
