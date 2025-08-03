@@ -13,21 +13,21 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- bootstrap css -->
-      <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}" />
+      <link rel="stylesheet" href="{{ secure_asset('asset/css/bootstrap.min.css') }}" />
       <!-- site css -->
-      <link rel="stylesheet" href="{{ asset('asset/style.css') }}" />
+      <link rel="stylesheet" href="{{ secure_asset('asset/style.css') }}" />
       <!-- responsive css -->
-      <link rel="stylesheet" href="{{ asset('asset/css/responsive.css') }}" />
+      <link rel="stylesheet" href="{{ secure_asset('asset/css/responsive.css') }}" />
       <!-- color css -->
-      <link rel="stylesheet" href="{{ asset('asset/css/colors.css') }}" />
+      <link rel="stylesheet" href="{{ secure_asset('asset/css/colors.css') }}" />
       <!-- select bootstrap -->
-      <link rel="stylesheet" href="{{ asset('asset/css/bootstrap-select.css') }}" />
+      <link rel="stylesheet" href="{{ secure_asset('asset/css/bootstrap-select.css') }}" />
       <!-- scrollbar css -->
-      <link rel="stylesheet" href="{{ asset('asset/css/perfect-scrollbar.css') }}" />
+      <link rel="stylesheet" href="{{ secure_asset('asset/css/perfect-scrollbar.css') }}" />
       <!-- custom css -->
-      <link rel="stylesheet" href="{{ asset('asset/css/custom.css') }}" />
+      <link rel="stylesheet" href="{{ secure_asset('asset/css/custom.css') }}" />
       <!-- calendar file css -->
-      <link rel="stylesheet" href="{{asset('asset/js/semantic.min.css')}}" />
+      <link rel="stylesheet" href="{{secure_asset('asset/js/semantic.min.css')}}" />
    </head>
    <body class="inner_page login">
       <div class="full_container">
@@ -75,19 +75,19 @@
          </div>
       </div>
       <!-- jQuery -->
-      <script src="{{asset('asset/js/jquery.min.js')}}"></script>
-      <script src="{{asset('asset/js/popper.min.js')}}"></script>
-      <script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
+      <script src="{{secure_asset('asset/js/jquery.min.js')}}"></script>
+      <script src="{{secure_asset('asset/js/popper.min.js')}}"></script>
+      <script src="{{secure_asset('asset/js/bootstrap.min.js')}}"></script>
       <!-- wow animation -->
-      <script src="{{asset('asset/js/animate.js')}}"></script>
+      <script src="{{secure_asset('asset/js/animate.js')}}"></script>
       <!-- select country -->
-      <script src="{{asset('asset/js/bootstrap-select.js')}}"></script>
+      <script src="{{secure_asset('asset/js/bootstrap-select.js')}}"></script>
       <!-- nice scrollbar -->
-      <script src="{{asset('asset/js/perfect-scrollbar.min.js')}}"></script>
+      <script src="{{secure_asset('asset/js/perfect-scrollbar.min.js')}}"></script>
       <script>
          var ps = new PerfectScrollbar('#sidebar');
       </script>
       <!-- custom js -->
-      <script src="{{asset('asset/js/custom.js')}}"></script>
+      <script src="{{secure_asset('asset/js/custom.js')}}"></script>
    </body>
 </html>
