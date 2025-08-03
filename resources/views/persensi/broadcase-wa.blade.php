@@ -7,7 +7,7 @@
         <h2 class="mb-4" id="status-text">Status WhatsApp: {{ $status }}</h2>
 
         {{-- QR Code Section --}}
-        <div class="qr-container">
+        <div class="qr-container" id="qr-container">
             @if ($status == 'waiting' && $qr)
                 <div class="mb-3">
                     <img src="{{ $qr }}" class="img-fluid" style="max-width: 300px;">
@@ -30,10 +30,11 @@
 </div>
 @endsection
 
+
 <script>
     async function refreshQR() {
         try {
-            const response = await fetch("http://localhost:3000/qr");
+            const response = await fetch("https://whatsapp-qrcode-production.up.railway.app/qr");
             const data = await response.json();
 
             const statusText = document.getElementById('status-text');
