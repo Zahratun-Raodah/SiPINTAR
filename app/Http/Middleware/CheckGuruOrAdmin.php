@@ -13,7 +13,9 @@ class CheckGuruOrAdmin
 
     if (Auth::guard('admin')->check()) {
         $disallowedRoutes = [
-            'persensi.tambah'
+            'persensi.tambah',
+            'jurnal.tambah',
+            'jurnal.edit'
         ];
 
         $routeName = optional($request->route())->getName();
