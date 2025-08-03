@@ -38,7 +38,8 @@ class CheckGuruOrAdmin
                 'persensi.filterLaporan',
                 'persensi.showLaporan',
                 'jurnal',
-                'jurnal.preview'
+                'jurnal.preview',
+                'persensi.filter'
                 // 'export.jurnal'
             ];
 
