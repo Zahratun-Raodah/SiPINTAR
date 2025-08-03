@@ -148,7 +148,7 @@ public function exportPdf($kelas = null)
 
     public function show($kelas,  $id_mapel)
     {
-        $response = Http::get('http://localhost:3000/qr');
+        $response = Http::get('https://whatsapp-qrcode-production.up.railway.app/qr');
         $data = $response->json();
         return view('persensi.broadcase-wa', [
             'qr' => $data['qr'] ?? null,
