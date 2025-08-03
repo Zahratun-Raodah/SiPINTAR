@@ -40,7 +40,7 @@
                      </div>
                   </div>
                   <div class="login_form">
-                     <form action="{{ route('login') }}" method="POST">
+                     <form action="{{ secure_url('login') }}" method="POST">
                         @csrf
                         <fieldset>
                            @if ($errors->any())
