@@ -11,7 +11,7 @@
             {{-- <div class="icon_setting"></div> --}}
             <div class="user_profle_side">
                 {{-- <div class="user_img">
-                    <img class="img-responsive" src="{{ asset('asset/images/layout_img/user_img.jpg') }}" alt="#" />
+                    <img class="img-responsive" src="{{ secure_asset('asset/images/layout_img/user_img.jpg') }}" alt="#" />
                 </div> --}}
                 {{-- <div class="user_info">
                     <h6>
