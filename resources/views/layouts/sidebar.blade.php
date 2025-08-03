@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <div class="logo_section">
                 <a href="index.html"><img class="logo_icon img-responsive"
-                        src="{{ asset('asset/images/logo/logo_icon.jpg') }}" alt="#" /></a>
+                        src="{{ secure_asset('asset/images/logo/logo_icon.jpg') }}" alt="#" /></a>
             </div>
         </div>
         <div class="sidebar_user_info border-bottom border-1 border-warning">
