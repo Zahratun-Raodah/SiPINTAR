@@ -24,7 +24,7 @@
     <!-- color css -->
     <link rel="stylesheet" href="{{ secure_asset('asset/css/colors.css') }}" />
     <!-- select bootstrap -->
-    <link rel="stylesheet" href="{{ asset('asset/css/bootstrap-select.css') }}" />
+    <link rel="stylesheet" href="{{ secure_asset('asset/css/bootstrap-select.css') }}" />
     <!-- scrollbar css -->
     <link rel="stylesheet" href="{{ secure_asset('asset/css/perfect-scrollbar.css') }}" />
     <!-- custom css -->
