@@ -107,7 +107,7 @@
                                     <ul class="msg_list">
                                         @foreach ($data as $item)
                                         <li>
-                                           <span><img src="{{ asset('asset/images/layout_img/images.jpg') }}" class="img-responsive" alt="#" /></span>
+                                           <span><img src="{{ secure_asset('asset/images/layout_img/images.jpg') }}" class="img-responsive" alt="#" /></span>
                                            <span>
                                            <span class="name_user">{{$item->guru->nama}}</span>
                                            <span class="msg_user">{{$item->kegiatan_belajar}}</span>
