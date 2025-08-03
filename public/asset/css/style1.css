@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Viga";
-  src: url("font/Viga/Viga-Regular.ttf") format("truetype");
+  src: url("/font/Viga/Viga-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "Kalam";
-  src: url("font/Kalam/Kalam-Regular.ttf") format("truetype");
+  src: url("/font/Kalam/Kalam-Regular.ttf") format("truetype");
 }
 
 body {
