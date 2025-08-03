@@ -68,7 +68,7 @@ Route::middleware(['checkGuruOrAdmin'])->group(function(){
         Route::get('/profil/tambah', [ProfilController::class, 'create'])->name('profil.tambah');
         Route::post('/profil/store', [ProfilController::class, 'store'])->name('profil.store');
         Route::get('/profil/edit', [ProfilController::class, 'edit'])->name('profil.edit');
-        Route::get('/profil/update', [ProfilController::class, 'update'])->name('profil.update');
+        Route::put('/profil/update', [ProfilController::class, 'update'])->name('profil.update');
         Route::get('/profil/detail', [ProfilController::class, 'show'])->name('profil.show');
 
         Route::get('/mapel', [MapelController::class, 'index'])->name('mapel');
