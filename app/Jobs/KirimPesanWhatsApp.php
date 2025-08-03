@@ -27,8 +27,8 @@ class KirimPesanWhatsApp implements ShouldQueue
     public function handle()
     {
         try {
-            // $response = Http::post('http://localhost:3000/persensi/send', [
-            $response = Http::post('http://127.0.0.1:3000/persensi/send', [
+            // $response = Http::post('https://whatsapp-qrcode-production.up.railway.app/persensi/send', [
+            $response = Http::post('https://whatsapp-qrcode-production.up.railway.app/persensi/send', [
                 'number' => $this->nomor,
                 'message' => $this->pesan
             ]);
