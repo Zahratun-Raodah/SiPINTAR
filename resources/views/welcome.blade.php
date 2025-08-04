@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="{{ route('login')}}" class="text-white text-decoration-none fs-4">Login</a>
+              <a href="{{ route('login')}}" class="text-warning fw-bold text-decoration-none fs-3">Login</a>
             </li>
           </ul>
         </div>
@@ -30,8 +30,8 @@
     <!-- akhir nav -->
     <!-- jum -->
     <div class="jumbotron text-center">
-        <p class="lead fs-4">Selamat Datang Di</p>
-      <h1 class="display-4">{{ $item->nama_sekolah }}</h1>
+        <p class="lead fs-4 text-warning">Selamat Datang Di</p>
+      <h1 class="display-4 text-warning">{{ $item->nama_sekolah }}</h1>
     </div>
     <!-- akhir jum -->
 
