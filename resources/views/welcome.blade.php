@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         @foreach ($data as $item)
-        <img src="{{ secure_asset($item->logo)}}" class="img-fluid  position-absolute top-0 start-0 m-3 z-4" style="width: 50px;">
+        {{-- <img src="{{ asset($item->logo)}}" class="img-fluid  position-absolute top-0 start-0 m-3 z-4" style="width: 50px;"> --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
