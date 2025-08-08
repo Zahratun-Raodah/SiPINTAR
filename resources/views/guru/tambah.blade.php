@@ -31,41 +31,41 @@
                         @endforeach
                     </ul>
                 </div>
-             @endif 
+             @endif
                 <form action="{{ route('guru.store') }}" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label>NPSN</label>
-                            <input type="text" class="form-control" name="npsn" value="{{ old('npsn') }}">
+                            <label>NPSN <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="npsn" value="{{ old('npsn') }}" placeholder="Isi jika ada">
                         </div>
                         <div class="form-group">
-                            <label>Unit Kerja</label>
-                            <input type="text" class="form-control" name="unit_kerja" value="{{ old('unit_kerja') }}">
+                            <label>Unit Kerja <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="unit_kerja" value="{{ old('unit_kerja') }}" placeholder="Isi jika ada">
                         </div>
                         <div class="form-group">
                             <label>Nama</label>
                             <input type="text" class="form-control" name="nama" required>
                         </div>
                         <div class="form-group">
-                            <label>Gelar Depan</label>
-                            <input type="text" class="form-control" name="grl_dpn">
+                            <label>Gelar Depan <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="grl_dpn" placeholder="Isi jika ada">
                         </div>
                         <div class="form-group">
-                            <label>Gelar Belakang</label>
-                            <input type="text" class="form-control" name="grl_belakang">
+                            <label>Gelar Belakang <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="grl_belakang" placeholder="Isi jika ada">
                         </div>
                         <div class="form-group">
                             <label>Nip</label>
                             <input type="text" class="form-control" name="nip" required>
                         </div>
                         <div class="form-group">
-                            <label>Pangkat</label>
-                            <input type="text" class="form-control" name="pangkat">
+                            <label>Pangkat <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="pangkat" placeholder="Isi jika ada">
                         </div>
                         <div class="form-group">
-                            <label>Golongan</label>
-                            <input type="text" class="form-control" name="gol">
+                            <label>Golongan <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="gol" placeholder="Isi jika ada">
                         </div>
                         <div class="form-group">
                             <label>Jenis Kelamin</label><br>
@@ -84,8 +84,8 @@
                             <input type="tel" class="form-control" name="no_hp">
                         </div>
                         <div class="form-group">
-                            <label>Mata Pelajaran</label>
-                            <input type="text" class="form-control" name="mapel">
+                            <label>Mata Pelajaran <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="mapel" placeholder="Isi jika ada">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
