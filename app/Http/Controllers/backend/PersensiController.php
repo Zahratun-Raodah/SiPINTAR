@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Absensi;
 use App\Models\Siswa;
 use App\Models\Mapel;
+use App\Models\Guru;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -53,7 +55,6 @@ class PersensiController extends Controller
     public function ShowAbsen(Request $request)
     {
 
-    // Ambil ID siswa yang diabsen hari ini oleh guru yang login
     $siswaIdHariIni = Absensi::where('id_guru', auth('guru')->id())
         ->whereDate('created_at', Carbon::today())
         ->pluck('id_siswa');
@@ -90,7 +91,6 @@ public function exportPdf($kelas = null)
     $data = $query->get();
     $mapel = $data->first()->mapel ?? null;
 
-    // Hitung semester & tahun ajaran
     $bulan = Carbon::now()->month;
     $tahun = Carbon::now()->year;
 
@@ -104,15 +104,20 @@ public function exportPdf($kelas = null)
             $tahun_akhir = $tahun;
     }
 
-    $user = null;
+     $user = Auth::guard('guru')->user() ?? Auth::guard('admin')->user();
+     $namaUser = $user->nama ?? 'Tidak diketahui';
+     $nip = '..........................';
 
-    if (auth('guru')->check()) {
-        $user = auth('guru')->user();
-    } elseif (auth('admin')->check()) {
-        $user = auth('admin')->user();
-    }
+     if (auth('admin')->check()) {
+         $nip = auth('admin')->user()->nip ?? $nip;
+     } elseif (auth('guru')->check()) {
+         $nip = auth('guru')->user()->nip ?? $nip;
+     }
 
-    $pdf = Pdf::loadView('persensi.pdf', compact('data', 'kelas', 'mapel','semester','tahun_awal','tahun_akhir', 'user'))
+     $kepala_sekolah = Guru::where('status', 'Kepala Sekolah')->first();
+
+    $pdf = Pdf::loadView('persensi.pdf', compact('data', 'kelas', 'mapel','semester','tahun_awal','tahun_akhir', 'user',
+    'namaUser','nip','kepala_sekolah'))
               ->setPaper('legal', 'landscape');
     return $pdf->download('laporan-absensi-kelas-' . ($kelas ?? 'semua') . '.pdf');
 }
@@ -148,7 +153,7 @@ public function exportPdf($kelas = null)
 
     public function show($kelas,  $id_mapel)
     {
-        $response = Http::get('https://whatsapp-qrcode-production.up.railway.app/qr');
+        $response = Http::get('http://localhost:3000/qr');
         $data = $response->json();
         return view('persensi.broadcase-wa', [
             'qr' => $data['qr'] ?? null,
@@ -165,7 +170,6 @@ public function exportPdf($kelas = null)
         return back()->with('error', 'Tidak ada siswa di kelas ini.');
     }
 
-    // Cek apakah sudah isi absen
     $sudahAbsen = Absensi::whereIn('id_siswa', $siswaIdDiKelas)
         ->where('id_guru', auth('guru')->id())
         ->where('id_mapel', $id_mapel)
@@ -174,7 +178,7 @@ public function exportPdf($kelas = null)
     if (!$sudahAbsen) {
         return back()->with('error', 'Anda belum mengisi absen untuk kelas ini hari ini.');
     }
-    // Cek apakah broadcast sudah terkirim
+
     $sudahBroadcast = Absensi::whereIn('id_siswa', $siswaIdDiKelas)
         ->where('id_guru', auth('guru')->id())
         ->where('id_mapel', $id_mapel)
@@ -186,7 +190,6 @@ public function exportPdf($kelas = null)
         return back()->with('error', 'Broadcast untuk kelas ini hari ini sudah dikirim.');
     }
 
-    // Ambil data siswa dan absensi hari ini
     $siswaList = Siswa::where('kelas', $kelas)
         ->with(['absensiHariIni' => function ($q) use ($id_mapel) {
         $q->whereDate('created_at', Carbon::today())
