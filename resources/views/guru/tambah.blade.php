@@ -73,11 +73,6 @@
                             <label for="laki-laki">Laki-laki</label><br>
                             <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan">
                             <label for="perempuan">Perempuan</label>
-                            {{-- <select class="form-control" name="jenis_kelamin" id="" required>
-                                <option value="" hidden>--pilih jenis kelamin--</option>
-                                <option value="Laki-laki">Laki-laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select> --}}
                         </div>
                         <div class="form-group">
                             <label>No Hp</label>
@@ -113,12 +108,6 @@
                             <label for="guru">Guru</label><br>
                             <input type="radio" id="kepsek" name="status" value="Kepala Sekolah">
                             <label for="kepsek">Kepala Sekolah</label>
-                            {{-- <select class="form-control" name="status" id="" required>
-                                <option value="" hidden>--pilih status--</option>
-                                <option value="Admin">Admin</option>
-                                <option value="Guru">Guru</option>
-                                <option value="Kepala Sekolah">Kepala Sekolah</option>
-                            </select> --}}
                         </div>
                         <div class="form-group" required>
                             <label>Password</label>
