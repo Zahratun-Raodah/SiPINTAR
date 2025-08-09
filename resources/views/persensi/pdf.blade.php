@@ -28,7 +28,6 @@
         <thead>
             <tr>
                 <th rowspan="2">No</th>
-                {{-- <th rowspan="2">NISN</th> --}}
                 <th rowspan="2">NISN</th>
                 <th rowspan="2" class="left">Nama Siswa</th>
                 <th rowspan="2">L/P</th>
@@ -61,7 +60,6 @@
                 @endphp
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    {{-- <td>{{ $siswa->nis ?? '-' }}</td> --}}
                     <td>{{ $siswa->nisn ?? '-' }}</td>
                     <td class="left">{{ $siswa->nama ?? '-' }}</td>
                     <td>{{ $siswa->jenis_kelamin ?? '-' }}</td>
@@ -77,6 +75,26 @@
                 </tr>
             @endforeach
         </tbody>
+    </table>
+    <table style="width: 100%; margin-top: 60px;">
+        <tr>
+            <td style="width: 50%; text-align: center;">
+                Mengetahui,<br>
+                <strong>Kepala Sekolah</strong>
+                <br><br><br><br>
+            @if($kepala_sekolah)
+                <p><strong>{{ $kepala_sekolah->nama }}</strong></p>
+                <p>NIP: {{ $kepala_sekolah->nip }}</p>
+            @endif
+            </td>
+            <td style="width: 50%; text-align: center;">
+                Kuripan, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}<br>
+                <strong>Guru Mata Pelajaran</strong>
+                <br><br><br><br>
+                <strong>{{ $namaUser }}</strong><br>
+                NIP: {{ $nip }}
+            </td>
+        </tr>
     </table>
 </body>
 </html>
