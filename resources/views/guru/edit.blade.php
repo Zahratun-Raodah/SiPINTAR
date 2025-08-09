@@ -11,15 +11,6 @@
                 <div class="card-header">
                     <h4>Edit Data Guru</h4>
                 </div>
-                {{-- @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif --}}
                 <form action="{{ route('guru.update', [$data->id]) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -29,24 +20,24 @@
                             <input type="text" class="form-control" name="nama" value="{{ $data->nama }}">
                         </div>
                         <div class="form-group">
-                            <label>Gelar Depan</label>
-                            <input type="text" class="form-control" name="grl_dpn" value="{{ $data->grl_dpn }}">
+                            <label>Gelar Depan <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="grl_dpn" value="{{ $data->grl_dpn }}" placeholder="Isi jika ada">
                         </div>
                         <div class="form-group">
-                            <label>Gelar Belakang</label>
-                            <input type="text" class="form-control" name="grl_belakang" value="{{ $data->grl_belakang }}">
+                            <label>Gelar Belakang <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="grl_belakang" value="{{ $data->grl_belakang }}" placeholder="Isi jika ada">
                         </div>
                         <div class="form-group">
                             <label>Nip</label>
                             <input type="text" class="form-control" name="nip" value="{{ $data->nip }}">
                         </div>
                         <div class="form-group">
-                            <label>Pangkat</label>
-                            <input type="text" class="form-control" name="pangkat" value="{{ $data->pangkat }}">
+                            <label>Pangkat <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="pangkat" value="{{ $data->pangkat }}" placeholder="Isi jika ada">
                         </div>
                         <div class="form-group">
-                            <label>Golongan</label>
-                            <input type="text" class="form-control" name="gol" value="{{ $data->gol }}">
+                            <label>Golongan <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="gol" value="{{ $data->gol }}" placeholder="Isi jika ada">
                         </div>
                         <div class="form-group">
                             <label>Jenis Kelamin</label><br>
@@ -54,19 +45,14 @@
                             <label for="laki-laki">Laki-laki</label><br>
                             <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" {{ $data->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>
                             <label for="perempuan">Perempuan</label>
-                            {{-- <select class="form-control" name="jenis_kelamin" id="">
-                                <option value="" hidden>--pilih jenis kelamin--</option>
-                                <option value="Laki-laki" {{ $data->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                                <option value="Perempuan" {{ $data->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-                            </select> --}}
                         </div>
                         <div class="form-group">
                             <label>No Hp</label>
                             <input type="tel" class="form-control" name="no_hp" value="{{ $data->no_hp }}">
                         </div>
                         <div class="form-group">
-                            <label>Mata Pelajaran</label>
-                            <input type="text" class="form-control" name="mapel" value="{{ $data->mapel }}">
+                            <label>Mata Pelajaran <small class="text-muted">(Opsional)</small></label>
+                            <input type="text" class="form-control" name="mapel" value="{{ $data->mapel }}" placeholder="Isi jika ada">
                         </div>
                          <div class="form-group">
                             <label>Email</label>
@@ -94,12 +80,6 @@
                             <label for="guru">Guru</label><br>
                             <input type="radio" id="kepala-sekolah" name="status" value="Kepala Sekolah" {{ $data->status == 'Kepala Sekolah' ? 'checked' : '' }}>
                             <label for="kepala-sekolah">Kepala Sekolah</label>
-                            {{-- <select class="form-control" name="status" id="">
-                                <option value="" hidden>--pilih status--</option>
-                                <option value="Admin" {{ $data->status == 'Admin' ? 'selected' : '' }}>Admin</option>
-                                <option value="Guru" {{ $data->status == 'Guru' ? 'selected' : '' }}>Guru</option>
-                                <option value="Kepala Sekolah" {{ $data->status == 'Kepala Sekolah' ? 'selected' : '' }}>Kepala Sekolah</option>
-                            </select> --}}
                         </div>
                         <div class="form-group">
                             <label>Password</label>
