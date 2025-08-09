@@ -5,6 +5,8 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Jurnal_Mengajar;
 use App\Models\Guru;
+use App\Models\Absensi;
+use App\Models\Siswa;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,6 +71,39 @@ class JurnalController extends Controller
     return redirect()->route('jurnal')->with('success', 'jurnal berhasil ditambahkan');
     }
 
+    public function getAbsensiByKelas(Request $request)
+    {
+        $guruId = auth('guru')->id() ?? auth('admin')->id();
+        $tanggalHariIni = Carbon::today();
+        $kelas = $request->kelas;
+
+        $Sakit =  Absensi::join('siswa', 'absensi.id_siswa', '=', 'siswa.id')
+                ->where('absensi.id_guru', $guruId)
+                ->where('siswa.kelas', $kelas)
+                ->whereDate('absensi.created_at', $tanggalHariIni)
+                ->where('absensi.status', 'sakit')
+                ->count();
+
+        $Izin =  Absensi::join('siswa', 'absensi.id_siswa', '=', 'siswa.id')
+                ->where('absensi.id_guru', $guruId)
+                ->where('siswa.kelas', $kelas)
+                ->whereDate('absensi.created_at', $tanggalHariIni)
+                ->where('absensi.status', 'izin')
+                ->count();
+
+        $Alpha = Absensi::join('siswa', 'absensi.id_siswa', '=', 'siswa.id')
+                ->where('absensi.id_guru', $guruId)
+                ->where('siswa.kelas', $kelas)
+                ->whereDate('absensi.created_at', $tanggalHariIni)
+                ->where('absensi.status', 'alpha')
+                ->count();
+
+        return response()->json([
+            'sakit' => $Sakit,
+            'izin' => $Izin,
+            'alpha' => $Alpha
+        ]);
+    }
 
     public function edit($id)
     {
@@ -110,10 +145,10 @@ class JurnalController extends Controller
     public function showPdf(Request $request)
     {
         $user = Auth::guard('guru')->user() ?? Auth::guard('admin')->user();
-    
+
         $nip = '..........................';
         $namaUser = $user->nama ?? 'Tidak diketahui';
-    
+
         if ($user->status === 'Guru') {
             $guru = Guru::where('id', $user->id)->first();
             $data = Jurnal_Mengajar::with('guru')
@@ -123,12 +158,12 @@ class JurnalController extends Controller
             $guru = null;
             $data = Jurnal_Mengajar::with('guru')->get();
         }
-    
+
         $kepala_sekolah = Guru::where('status', 'Kepala Sekolah')->first();
-    
+
         $bulan = Carbon::now()->month;
         $tahun = Carbon::now()->year;
-    
+
         if ($bulan >= 7) {
             $semester = 'SEMESTER GANJIL';
             $tahun_awal = $tahun;
@@ -138,13 +173,13 @@ class JurnalController extends Controller
             $tahun_awal = $tahun - 1;
             $tahun_akhir = $tahun;
         }
-    
+
         if (auth('admin')->check()) {
             $nip = auth('admin')->user()->nip ?? $nip;
         } elseif (auth('guru')->check()) {
             $nip = auth('guru')->user()->nip ?? $nip;
         }
-    
+
         // Kirim semua data ke view Blade (tidak membuat PDF)
         return view('jurnal_mengajar.show_laporan', compact(
             'data',
@@ -157,9 +192,7 @@ class JurnalController extends Controller
             'nip'
         ));
     }
-    
 
-        
     public function exportPdf()
     {
         $user = Auth::guard('guru')->user() ?? Auth::guard('admin')->user();
