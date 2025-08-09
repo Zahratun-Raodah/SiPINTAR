@@ -20,13 +20,13 @@
                         </div>
                         <div class="form-group">
                             <label>Kelas</label>
-                            <select class="form-control" name="kelas" required>
+                            <select class="form-control" name="kelas" id="kelasSelect" required>
                                 <option value="" hidden>--pilih kelas--</option>
                                 @foreach(['7A','7B','7C','7D','7E','7F','8A','8B','8C','8D','8E','8F','9A','9B','9C','9D','9E'] as $kelas)
-                                    <option value="{{ $kelas }}" {{ (isset($data) && $data->kelas == $kelas) ? 'selected' : '' }}>{{ $kelas }}</option>
+                                    <option value="{{ $kelas }}">{{ $kelas }}</option>
                                 @endforeach
                             </select>
-                        </div>                        
+                        </div>
                         <div class="form-group">
                             <label>Kompetensi dasar</label>
                             <input type="text" class="form-control" name="kompetensi_dasar" required>
@@ -37,15 +37,15 @@
                         </div>
                         <div class="form-group">
                             <label>Absensi Sakit</label>
-                            <input type="number" class="form-control" name="absen_sakit" required>
+                            <input type="number" class="form-control" name="absen_sakit" id="absenSakit" readonly>
                         </div>
                         <div class="form-group">
                             <label>Absensi Izin</label>
-                            <input type="number" class="form-control" name="absen_izin" required>
+                            <input type="number" class="form-control" name="absen_izin" id="absenIzin" readonly>
                         </div>
                         <div class="form-group">
                             <label>Absensi Alpa</label>
-                            <input type="number" class="form-control" name="absen_alpha" required>
+                            <input type="number" class="form-control" name="absen_alpha" id="absenAlpha" readonly>
                         </div>
                         <div class="form-group">
                             <label>Keterangan</label>
@@ -60,3 +60,25 @@
             </div>
         </div>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $('#kelasSelect').on('change', function() {
+        let kelas = $(this).val();
+
+        if (kelas) {
+            $.ajax({
+                url: "{{ route('get.absensi') }}",
+                method: "GET",
+                data: { kelas: kelas },
+                success: function(data) {
+                    $('#absenSakit').val(data.sakit);
+                    $('#absenIzin').val(data.izin);
+                    $('#absenAlpha').val(data.alpha);
+                }
+            });
+        }
+    })
+});
+</script>
