@@ -97,6 +97,7 @@ Route::middleware(['checkGuruOrAdmin'])->group(function(){
     Route::get('/jurnal', [JurnalController::class, 'index'])->name('jurnal');
     Route::get('/jurnal/tambah', [JurnalController::class, 'create'])->name('jurnal.tambah');
     Route::post('/jurnal/store', [JurnalController::class, 'store'])->name('jurnal.store');
+    Route::get('/jurnal/get-absensi', [JurnalController::class, 'getAbsensiByKelas'])->name('get.absensi');
     Route::get('/jurnal/edit/{id}', [JurnalController::class, 'edit'])->name('jurnal.edit');
     Route::put('/jurnal/update/{id}', [JurnalController::class, 'update'])->name('jurnal.update');
     Route::get('/jurnal/preview', [JurnalController::class, 'showPdf'])->name('jurnal.preview');
